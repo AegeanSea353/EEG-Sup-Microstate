@@ -3,15 +3,15 @@
 clear;
 addpath('Utils');
 
-Root = 'E:\HIAO\MICROSTATELAB\'; % Set root path
+Root = 'E:\MICROSTATELAB\'; % Set root path
 
 % Set stat path of two groups
-Statfile_g1 = [Root 'Output\HealthyControls\TemporalParameters_7 classes_Mean_HC_Template.csv']; 
-Statfile_g2 = [Root 'Output\EP_OutPatients\TemporalParameters_7 classes_Mean_EPOP_Template.csv']; 
+Statfile_g1 = [Root 'Output\G1\TemporalParameters_7 classes_Mean_g1_Template.csv']; 
+Statfile_g2 = [Root 'Output\G2\TemporalParameters_7 classes_Mean_g2_Template.csv']; 
 
 % Set prefix of two groups
-prefix_g1 = 'HC';
-prefix_g2 = 'EPOP';
+prefix_g1 = 'g1';
+prefix_g2 = 'g2';
 
 % Set Cohen's D output path
 Csvpath = [Root '\Csv\CohenD\'];
@@ -36,15 +36,15 @@ for i = col_index
 
     x1 = Data_g1.(Data_g1.Properties.VariableNames{i});
     x2 = Data_g2.(Data_g2.Properties.VariableNames{i});
-    CohenD = computeCohen_d(x1,x2,'independent'); % Computing Cohen's D
+    CohenD = computeCohen_d(x1,x2,'independent');
     CohenD_val = [CohenD_val; CohenD];
 
 end
 
-% Merging to a table
+% Merging
 CohenD_head_str = string(CohenD_head);
 for k = 1:numel(CohenD_head_str)
     CohenD_table.(CohenD_head_str{k}) = CohenD_val(k);
 end
 
-writetable(CohenD_table,[Csvpath 'CohenD_' prefix_g1 '_' prefix_g2 '.csv']); % Exporting the table eventually
+writetable(CohenD_table,[Csvpath 'CohenD_' prefix_g1 '_' prefix_g2 '.csv']); % Exporting
