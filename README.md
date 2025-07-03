@@ -19,4 +19,4 @@ Added to a computation for the Cohen's D effect size (power of stats), which can
 
 TopoPlot.m:
 Topoplotting microstate maps from the MICROSTATELAB plugin for visualization.
-Added an extra independent section to help users extract each electrode amplitude in the mean MS maps (if users were not planning to conduct and only want to plot topo, just comment this part of the section); 
+Added an extra independent section to help users extract each electrode amplitude in the mean MS maps (if users were not planning to conduct and only want to plot topo, just comment this part of the section).
